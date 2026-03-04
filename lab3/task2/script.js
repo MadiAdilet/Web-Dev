@@ -9,7 +9,6 @@ form.addEventListener('submit', function (event) {
     if (taskText === '') {
         return;
     }
-
     addTodoItem(taskText);
     input.value = '';
 });
