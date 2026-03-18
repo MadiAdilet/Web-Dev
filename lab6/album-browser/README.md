@@ -1,52 +1,102 @@
-# AlbumBrowser
+# Album Browser
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.5.
+An Angular application for browsing albums and their photos using the JSONPlaceholder API.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Browse a list of albums
+- View album details and edit titles
+- View photos for each album in a responsive grid
+- Navigation between different views
+- CRUD operations (Create, Read, Update, Delete) for albums
 
+## Technologies Used
+
+- Angular 21
+- Angular Router for navigation
+- Angular HttpClient for API calls
+- RxJS for reactive programming
+- JSONPlaceholder API for mock data
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+- Angular CLI
+
+### Installation
+
+1. Clone the repository
+2. Navigate to the project directory:
+   ```bash
+   cd lab6/album-browser
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the Application
+
+Start the development server:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The application will be available at `http://localhost:4200/`.
 
-## Code scaffolding
+### Building for Production
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+To build the project for production:
 ```bash
-ng generate component component-name
+ng build --configuration production
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The build artifacts will be stored in the `dist/` directory.
 
-```bash
-ng generate --help
+## API Information
+
+This application uses the JSONPlaceholder API:
+- Base URL: https://jsonplaceholder.typicode.com
+- Albums endpoint: GET /albums
+- Single album: GET /albums/:id
+- Album photos: GET /albums/:id/photos
+- Update album: PUT /albums/:id
+- Delete album: DELETE /albums/:id
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── models/
+│   │   ├── album.ts
+│   │   └── photo.ts
+│   ├── services/
+│   │   └── album.service.ts
+│   ├── home/
+│   ├── about/
+│   ├── albums/
+│   ├── album-detail/
+│   ├── album-photos/
+│   ├── app.routes.ts
+│   ├── app.config.ts
+│   ├── app.ts
+│   ├── app.html
+│   └── app.css
+└── ...
 ```
 
-## Building
+## Routes
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+- `/` - Redirects to `/home`
+- `/home` - Welcome page
+- `/about` - About page
+- `/albums` - List of all albums
+- `/albums/:id` - Album details
+- `/albums/:id/photos` - Photos for an album
 
 ```bash
 ng e2e

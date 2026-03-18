@@ -10,10 +10,26 @@ import { Photo } from '../models/photo';
 export class AlbumService {
   private apiUrl = 'https://jsonplaceholder.typicode.com';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log('AlbumService constructor called');
+  }
 
   getAlbums(): Observable<Album[]> {
-    return this.http.get<Album[]>(`${this.apiUrl}/albums`);
+    console.log('getAlbums called, making HTTP request to:', `${this.apiUrl}/albums`);
+    // Try using fetch instead of HttpClient
+    return new Observable((observer) => {
+      fetch(`${this.apiUrl}/albums`)
+        .then(response => response.json())
+        .then(data => {
+          console.log('Fetch response:', data);
+          observer.next(data);
+          observer.complete();
+        })
+        .catch(error => {
+          console.error('Fetch error:', error);
+          observer.error(error);
+        });
+    });
   }
 
   getAlbum(id: number): Observable<Album> {

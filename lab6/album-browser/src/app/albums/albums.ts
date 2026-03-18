@@ -15,19 +15,23 @@ export class AlbumsComponent implements OnInit {
   albums: Album[] = [];
   loading = true;
 
-  constructor(private albumService: AlbumService) {}
+  constructor(private albumService: AlbumService) {
+    console.log('AlbumsComponent constructor called');
+  }
 
   ngOnInit(): void {
-    this.albumService.getAlbums().subscribe({
-      next: (data) => {
+    console.log('AlbumsComponent ngOnInit called');
+    this.albumService.getAlbums().subscribe(
+      (data) => {
+        console.log('Albums loaded:', data);
         this.albums = data;
         this.loading = false;
       },
-      error: (err) => {
+      (err) => {
         console.error('Failed to load albums', err);
         this.loading = false;
       }
-    });
+    );
   }
 
   deleteAlbum(id: number): void {
@@ -39,3 +43,4 @@ export class AlbumsComponent implements OnInit {
     });
   }
 }
+
