@@ -1,9 +1,7 @@
-# models.py
-# Lab 7 - Task 2: Object-Oriented Programming in Python
 
 
 class Animal:
-    """Base class representing a generic animal."""
+   
 
     def __init__(self, name, age, color):
         self.name = name
@@ -21,7 +19,6 @@ class Animal:
 
 
 class Dog(Animal):
-    """Child class representing a dog."""
 
     def __init__(self, name, age, color, breed):
         super().__init__(name, age, color)
@@ -39,7 +36,7 @@ class Dog(Animal):
 
 
 class Cat(Animal):
-    """Child class representing a cat."""
+
 
     def __init__(self, name, age, color, is_indoor):
         super().__init__(name, age, color)
