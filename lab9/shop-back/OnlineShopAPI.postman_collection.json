@@ -1,0 +1,233 @@
+{
+  "info": {
+    "name": "Online Shop API",
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "description": "REST API collection for the Online Shop Django REST Framework project (Lab 9). Base URL: http://127.0.0.1:8000",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/categories/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categories", ""]
+            },
+            "description": "Retrieve a list of all categories."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Category by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/categories/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categories", "1", ""]
+            },
+            "description": "Retrieve a single category by its ID."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Products by Category",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/categories/1/products/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categories", "1", "products", ""]
+            },
+            "description": "Custom action: retrieve all products belonging to category with ID=1."
+          },
+          "response": []
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sports\",\n  \"description\": \"Sports equipment and accessories\"\n}",
+              "options": {
+                "raw": { "language": "json" }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/categories/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categories", ""]
+            },
+            "description": "Create a new category. Send JSON body with name and description."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Electronics & Gadgets\",\n  \"description\": \"Updated description for electronics category\"\n}",
+              "options": {
+                "raw": { "language": "json" }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/categories/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categories", "1", ""]
+            },
+            "description": "Fully update category with ID=1. All fields are required for PUT."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/categories/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categories", "1", ""]
+            },
+            "description": "Delete the category with ID=1."
+          },
+          "response": []
+        }
+      ],
+      "description": "Endpoints for managing product categories."
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/products/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "products", ""]
+            },
+            "description": "Retrieve a list of all products."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/products/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "products", "1", ""]
+            },
+            "description": "Retrieve a single product by its ID."
+          },
+          "response": []
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category\": 1,\n  \"name\": \"Wireless Mouse\",\n  \"description\": \"Ergonomic wireless mouse with long battery life\",\n  \"price\": 29.99,\n  \"stock\": 75\n}",
+              "options": {
+                "raw": { "language": "json" }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/products/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "products", ""]
+            },
+            "description": "Create a new product. Use category ID in the 'category' field."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category\": 1,\n  \"name\": \"Smartphone Pro 15 (Updated)\",\n  \"description\": \"Updated flagship smartphone description\",\n  \"price\": 949.99,\n  \"stock\": 45\n}",
+              "options": {
+                "raw": { "language": "json" }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/products/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "products", "1", ""]
+            },
+            "description": "Fully update product with ID=1. All fields are required for PUT."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/products/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "products", "1", ""]
+            },
+            "description": "Delete the product with ID=1."
+          },
+          "response": []
+        }
+      ],
+      "description": "Endpoints for managing shop products."
+    }
+  ]
+}
